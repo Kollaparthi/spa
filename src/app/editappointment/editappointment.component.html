@@ -1,0 +1,246 @@
+<!-- <p>
+  editappointment works!
+</p> -->
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+<div class="container">
+<div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+  <div class="panel-heading" style="background:var(--headercolor);">
+    <h4>Edit Appointment</h4>
+  </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="name">Scheduled On</label>
+          <!-- <angular2-date-picker [(ngModel)]="scheduledon" placeholder="Scheduled On" [settings]="datesettings"></angular2-date-picker> -->
+          <input type="date" class="form-control" placeholder="Scheduled On" [(ngModel)]="scheduledon">
+        </div>
+        <div class="col-lg-4">
+          <label for="name">startTime</label>
+          <!-- <angular2-date-picker [(ngModel)]="starttime" placeholder="Scheduled On" [settings]="timesettings1"></angular2-date-picker> -->
+
+          <input type="time" class="form-control" placeholder="Start time" [(ngModel)]="starttime">
+        </div>
+        <div class="col-lg-4">
+          <label for="name">EndTime</label>
+          <!-- <angular2-date-picker [(ngModel)]="endtime" placeholder="Scheduled On" [settings]="timesettings2"></angular2-date-picker> -->
+
+          <input type="time"   class="form-control" placeholder="End time" [(ngModel)]="endtime">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+            <label for="text" >Client Name</label>
+            <div class="dropdown dropdown-scroll">
+              <button class="btn btn-block dropdown-toggle form-control" value={{custname}} list="browserstherapist"
+               name="brower"  type="button"
+                data-toggle="dropdown">
+                  <span class="pull-left">{{custname}}</span>
+                <span class="caret pull-right"></span>
+              </button>
+              <ul class="dropdown-menu scrl_drpdwn form-control" role="menu" aria-labelledby="dropdownMenu1" >
+                <li role="presentation">
+                    <input type="text"  placeholder="Search" class="form-control">
+                </li>
+                <li role="presentation" *ngFor="let customerall of customerAll" >
+                  <span  (click)="shown(customerall)">
+                    {{customerall.display_name}} </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+                        <div class="col-lg-6">
+          <label for="name" >Mobile Number</label>
+          <div class="dropdown dropdown-scroll">
+            <button class="btn btn-block dropdown-toggle form-control" value={{phone}} list="browserstherapist"
+             name="brower"  type="button"
+              data-toggle="dropdown">
+                <span class="pull-left" >{{phone}}</span>
+              <span class="caret pull-right"></span>
+            </button>
+            <ul class="dropdown-menu scrl_drpdwn form-control" role="menu" aria-labelledby="dropdownMenu1" >
+              <li role="presentation">
+                  <input type="text"  placeholder="Search" class="form-control">
+              </li>
+              <li role="presentation" *ngFor="let customerall of customerAll" >
+                <span  (click)="shown(customerall)">
+                  {{customerall.phone_number}} </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>Email Address</label>
+        <input type="text" name="email" class="form-control" id="email" placeholder="Email Address"  [(ngModel)]="selectemail" >
+      </div>
+      <div class="col-lg-6">
+        <label>Customer Allergy</label>
+        <input type="text"  placeholder="Customer Allergy" class="form-control" id="allergy" [(ngModel)]="selectallergy" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <label>Customer Note</label>
+        <input type="text"  class="form-control" placeholder="Customer Note" id="note" [(ngModel)]="selectnote" >
+        <br>
+        <div class="dropdown">
+            <button class="btn btn-block dropdown-toggle btnclr" type="button" data-toggle="dropdown">
+              <span class="pull-left">select</span>
+            <span class="caret pull-right" style="margin-top:0.5em;"></span>
+            </button>
+            <ul class="dropdown-menu" >
+             <div *ngFor="let treatmentall of treatmentAll">
+               <div class="action-checkbox" style="padding:2px;">
+                <input  id="{{treatmentall.treatment_id}}" type="checkbox" [checked] = "selection.indexOf(treatmentall) > -1 " (click) = "toggleSelection1(treatmentall)"/>
+                {{treatmentall.member}}-{{treatmentall.name}}-{{treatmentall.treatment_duration}}-{{treatmentall.No_of_hands}}Hands
+               </div>
+             </div>
+           </ul>
+          </div>
+          <div *ngFor="let item1 of select1; let tpindex=index" class="selected-item">
+            <label>{{item1.name}}</label>
+            <div class="dropdown dropdown-scroll">
+              <button class="btn btn-block dropdown-toggle btnclr"
+               type="button" id="{{'tp2' + tpindex}}"
+               data-toggle="dropdown">
+               <span  class="pull-left">select</span>
+              </button>
+              <ul class="dropdown-menu scrl_drpdwn"  >
+                <li role="presentation" >
+                    <input type="text"  placeholder="Search"  class="form-control">
+                </li>
+                <li role="presentation" *ngFor="let therapistall of therapistAll let i=index" >
+                   <input *ngIf="item1.No_of_hands==4" id="{{'checkbox_'+item1.treatment_id+'_'+i}}" type="checkbox"
+                    (click)="onFourHandsTherapistSelection(item1, therapistall, $event, 'tp2' + tpindex)">
+                   <span (click)="showtherap2(item1.treatment_id, therapistall, 'tp2'+tpindex)">{{therapistall.name}}</span>
+                </li>
+             </ul>
+           </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+          <label for="name">Procedure Planned</label>
+          <div class="row">
+              <div class="col-lg-8">
+                  <div *ngFor="let item of selection; let tpindex=index"  class="selected-item">
+                      <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" value={{custname}} list="browserstherapist"
+                   id="{{'tp1' + tpindex}}"  (click)="treatmentselection('tp1' + tpindex)"  class="form-control" type="button" data-toggle="dropdown">
+                            <span class="pull-left">{{item.name}}</span>
+                            <span class="caret  pull-right" style="margin-top:0.5em;"></span>
+                          </button>
+                          <ul class="dropdown-menu"  style="padding:5px;">
+                           <div *ngFor="let treatmentall of treatmentAll">
+
+                              <span (click)="show1(treatmentall)">
+                              {{treatmentall.member}}-{{treatmentall.name}}-{{treatmentall.treatment_duration}}-{{treatmentall.No_of_hands}}Hands
+                              </span>
+
+                           </div>
+                         </ul>
+                        </div>
+                      </div>
+              </div>
+              <div class="col-lg-4">
+
+                  <div *ngFor="let therap of selection1; let tpindex1=index"  class="selected-item">
+                      <div class="dropdown">
+                   <button class="btn btn-default dropdown-toggle"
+                   id="{{'tpedit1' + tpindex1}}"  (click)="therapistselection('tpedit1' + tpindex1)" class="form-control" type="button" data-toggle="dropdown">
+                   <span class="pull-left">{{therap.name}}{{therap.name2}}</span>
+                            <span class="caret pull-right"></span>
+                          </button>
+                          <ul class="dropdown-menu scrl_drpdwn"  >
+                              <li role="presentation" >
+                                  <input type="text"  placeholder="Search" class="form-control">
+                              </li>
+                              <li role="presentation" *ngFor="let therapistall of therapistAll let i1=index" >
+                                 <input *ngIf="therap.No_of_hands==4" id="{{'checkbox_'+therap.treatment_id+'_'+i1}}" type="checkbox"
+                                  (click)="onFourHandsTherapistSelection2(therap.treatment_id, therapistall, $event, 'tpedit1' + tpindex1)">
+                                 <span (click)="showtherap(therap.treatment_id, therapistall, 'tp2'+tpindex1)">{{therapistall.name}}</span>
+                              </li>
+                           </ul>
+                          <!-- <ul class="dropdown-menu" >
+                           <div *ngFor="let therapistall of therapistAll; let i1=index">
+                              <input *ngIf="item.No_of_hands==4" id="{{'checkbox_'+item.treatment_id+'_'+i1}}" type="checkbox"
+                              >
+                              <span (click)="showtherap(therapistall)">
+                              {{therapistall.name}}
+                              </span>
+
+                           </div>
+                         </ul> -->
+                        </div>
+                      </div>
+              </div>
+            </div>
+
+        </div>
+
+    </div>
+    <br/>
+ <!-- <div class="row">
+  <div class="col-lg-6">
+
+  </div>
+ </div> -->
+
+
+
+
+      <div class="pull-right">
+          <button type="button" class="btn btn-success btn-sm" (click) = "update()" >Update</button>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.scrl_drpdwn {
+  background-color: var(--white);
+  height: 200px;
+  /* width: 200px; */
+  overflow-y: scroll;
+}
+.btnclr{
+  background: var(--white);
+}

@@ -1,0 +1,159 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "../node_modules/angular-calendar/css/angular-calendar.css"; */
+/* :root {
+  --maincolor: #660099;
+  --white: #ffffff;
+  --greyopac: rgb(198, 175, 146, .5);
+} */
+:root {
+  --maincolor: #fff000;
+  --white: #ffffff;
+  --opaccolor: rgb(0, 0, 0, .2);
+  --black: #000000;
+  --headercolor: rgb(0, 0, 0, .3);
+}
+.login{
+   background:var(--opaccolor);
+   padding:2em;
+   margin:10px;
+   margin-top:11em;
+}
+label{
+  color: var(--black);
+  font-size: 16px;
+}
+h4{
+  color: var(--maincolor);
+  font-weight: 700;
+}
+.btn_lgn{
+  background:var(--maincolor);
+  color:var(--black);
+  border:none;
+  text-transform: uppercase;
+}
+input[type="text"],
+input[type="password"]{
+  /* height:32px; */
+  /* background: var(--inputblack);
+  border:var(--black);
+  color: var(--labelcolor); */
+  border-radius: 3px;
+}
+
+#pane {
+background-image: url("images/spabg1.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  #pane {
+    background-image: url("images/spabg1.jpg");
+  }
+}
+ul, li{
+  /* background: var(--white); */
+  padding: 3px;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--maincolor);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: var(--maincolor);
+  background: grey;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: -8px;
+  right: 18px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.navigation {
+  width: 300px;
+}
+
+/* reset our lists to remove bullet points and padding */
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* make ALL links (main and submenu) have padding and background color */
+.mainmenu a {
+  display: block;
+  background-color: none;
+  text-decoration: none;
+  padding: 10px;
+  color: #f1f1f1;
+}
+
+
+/* add hover behaviour */
+.mainmenu a:hover {
+    background-color: none;
+}
+
+
+/* when hovering over a .mainmenu item,
+  display the submenu inside it.
+  we're changing the submenu's max-height from 0 to 200px;
+*/
+
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}
+
+/*
+  we now overwrite the background-color for .submenu links only.
+  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+*/
+
+.submenu a {
+  background-color: none;
+}
+
+
+/* hover behaviour for links inside .submenu */
+.submenu a:hover {
+  background-color: none;
+}
+
+/* this is the initial state of all submenus.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: all 0.5s ease-out;
+}

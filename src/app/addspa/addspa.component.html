@@ -1,0 +1,186 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+  <div class="container">
+
+        <div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+          <div class="panel-heading"  style="background:var(--headercolor);">
+           <h4> Add SPA</h4>
+          </div>
+            <div class="panel-body">
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label>Spa Time</label>
+                      <div>
+                          <input type="text" class="form-control" placeholder="Spa Time" [(ngModel)]="startTime" (click)="open()"/>                         
+                      <!-- <input type="text" class="form-control form_time"  placeholder="Spa Time" [(ngModel)]="startTime" > -->
+                          </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <label>End Time</label>
+                      <div >
+                      <input type="text" class="form-control" placeholder="End Time" [(ngModel)]="endTime" (click)="end()">
+                          </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Time Interval</label>
+                      <div >
+                      <input type="text" class="form-control"  placeholder="Time Interval" (click)="interval()" [(ngModel)]="timeInterval">
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label>Spa Name</label><br>
+                      <input type="text" placeholder="Spa Name" class="form-control" [(ngModel)]="spaName">
+                    </div>
+
+                    <div class="col-lg-4">
+                      <label>Tag Line</label><br>
+                      <input type="text" placeholder="Tag Line" class="form-control" [(ngModel)]="tagLine">
+                    </div>
+
+                    <div class="col-lg-4">
+                      <label>Mobile</label><br>
+                      <input type="number" placeholder="Mobile" class="form-control" [(ngModel)]="mobile">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label>Landline</label><br>
+                      <input type="number" placeholder="Landline" class="form-control" [(ngModel)]="landLine">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Email</label><br>
+                      <input type="email" placeholder="Email" class="form-control" [(ngModel)]="email">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Google Plus</label><br>
+                      <input type="text" placeholder="Google Plus" class="form-control" [(ngModel)]="googlePlus">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label>Facebook</label><br>
+                      <input type="text" placeholder="Facebook" class="form-control" [(ngModel)]="facebook">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Twitter</label><br>
+                      <input type="text" placeholder="Twitter" class="form-control" [(ngModel)]="twitter">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Address Line1</label><br>
+                      <input type="text" placeholder="Address Line1" class="form-control" [(ngModel)]="addressLine1">
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <div class="col-lg-4">
+                      <label>Address Line2</label><br>
+                      <input type="text" placeholder="Address Line2" class="form-control" [(ngModel)]="addressLine2">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>City</label><br>
+                      <input type="text" placeholder="City" class="form-control" [(ngModel)]="city">
+                    </div>
+
+                    <div class="col-lg-4">
+                      <label>State</label><br>
+                     
+                      <input type="text" placeholder="State" class="form-control" [(ngModel)]="state">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <label>Country</label><br>
+                     
+                      <input type="text" placeholder="Country" class="form-control" [(ngModel)]="country">
+                    </div>
+                    <div class="col-lg-4">
+                      <label>Postal Code</label><br>
+                      <input type="number" placeholder="Postal Code" class="form-control" [(ngModel)]="postalCode">
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <label>Splash Screen Path</label><br>
+                          <input type="file" class="form-control" (change)="onSelectFile($event)" [(ngModel)]="splashScreenPath">
+                        </div>
+                        <div class="col-lg-3">
+                          <img   [src]="url" height="100" />
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="col-lg-6">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <label>Spa Logo</label><br>
+                        <input type="file"  class="form-control" (change)="onSelectFile1($event)" [(ngModel)]="spaLogo">
+                      </div>
+                      <div class="col-lg-3">
+                        <img  [src]="url1" height="100" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                  <div class="pull-right" >
+                  <button type="button" class="btn btn-success btn-sm" (click)="save()">Save</button>
+                </div>
+                </div>
+              </div>
+        </div>

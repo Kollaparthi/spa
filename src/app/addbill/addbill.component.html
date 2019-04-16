@@ -1,0 +1,179 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+
+<!--
+<a [routerLink] = "['/invoice']">
+  <button type="button" name="button" class="btn btn-success btn-xs">Edit</button></a> -->
+<div class="container-fluid">
+    <!-- <h2>Panel Group</h2>
+    <p>The panel-group class clears the bottom-margin. Try to remove the class and see what happens.</p> -->
+    <!-- <div class="panel-group"> -->
+      <div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+        <div class="panel-heading" style="background:var(--headercolor);">
+            <div class="row">
+                <div class="col-lg-8">
+                  <h4>Bill For :  Samyaa Spa</h4>
+                </div>
+                <!-- <div class="col-lg-4">
+
+                      <a href="">
+                      <button type="button" class="btn btn-success btn-sm pull-right">
+                      +&nbsp; Add Procedure
+                    </button>
+                    </a>
+
+                </div> -->
+              </div>
+        </div>
+        <div class="panel-body">
+          	completed Procedure
+            <!-- <div class="container"> -->
+
+                <!-- <div class="panel-group"> -->
+                  <div class="panel" *ngFor='let x of bill let index=index' style="margin-top:2em;background:var(--opaccolor);">
+                    <div class="panel-heading" style="background:var(--headercolor);">
+                      <p>Date: {{x.appointmentstarttime}}</p>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">PROCEDURE</th>
+                                <th scope="col">COST</th>
+                                <th scope="col">DISCOUNT</th>
+                                <th scope="col">TOTAL</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                              <th scope="row">{{x.procedure}}</th>
+                              <td class="cost" >{{x.cost}} </td>
+                              <td>
+                                <input type="text" id="{{'discountOptions' + index}}" [(ngModel)]="x.discount" placeholder="0" style="height:33px;color:var(--black);border:1px solid grey;border-radius:3px;"
+                                 (keyup)="getTotalValue123(x.cost, x.discount,selectedDiscountOption,x, 'discountOptions' + index)"
+                                 >
+                                <!-- (change)="selectedDiscountOption($event.target.value)"  - After Select -->
+                               <select id="{{'discountOption' + index}}"
+                               (change)="getTotalValue123(x.cost, x.discount,$event.target.value,x, 'discountOption' + index)"
+                               style="height:33px;color:var(--black);border:1px solid grey;border-radius:3px;">
+
+                               <option *ngFor="let discount of discountOptions">{{discount.value}}</option>
+
+                             </select></td>
+                             <!-- [value]="getTotalValue($event,x.cost, x.discount,selectedDiscountOption)" -->
+                              <td class="total">{{x.total}}</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <hr/>
+                          <p>&nbsp;&nbsp;Completed By :&nbsp;&nbsp;{{x.therapistName}}&nbsp;&nbsp;{{x.therapistName2}}</p>
+                    </div>
+                  </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                        </div>
+                        <div class="col-lg-3">
+                          <h4>Total Cost</h4>
+                        </div>
+                        <div class="col-lg-3">
+                          <h4>Total Discount</h4>
+                        </div>
+                        <div class="col-lg-3">
+                          <h4>Grand Total</h4>
+                        </div>
+                        <div class="col-lg-2">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2">
+                        </div>
+                        <div class="col-lg-3">
+                          <h4>INR {{getTotalDetails().totalCost}}</h4>
+                        </div>
+                        <div class="col-lg-2">
+                          <h4>{{getTotalDetails().totalDiscount}}</h4>
+                        </div>
+                        <div class="col-lg-1">
+                          <h4>=</h4>
+                        </div>
+                        <div class="col-lg-2">
+                          <h4>{{getTotalDetails().grandTotal}}</h4>
+                        </div>
+                        <!-- <div class="col-lg-1">
+                          {{invoiceheader}}
+                        </div> -->
+                      </div>
+                      <div class="modal-footer">
+                          <div class="pull-right">
+                              <button type="button" class="btn btn-success btn-sm" (click) = "save()" id="saveDetails">Save</button>
+                            </div>
+                      </div>
+                      <!-- <div class="panel-footer" style="background:var(--blackopac);border:none;">
+                        <div class="row">
+                          <div class="col-lg-8">
+                          </div>
+                          <div class="col-lg-4">
+                            <center>
+                              <button type="button" class="btn btn-success btn-sm pull-right" ng-click="save()">
+                                Save and create Invoice</button>
+                          </center>
+                          </div>
+                        </div>
+
+                      </div> -->
+                    <!-- <div class="panel-body">Panel Content</div> -->
+
+                <!-- </div> -->
+              <!-- </div> -->
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+

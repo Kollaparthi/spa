@@ -1,0 +1,151 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+<div class="container">
+
+  <!-- <div class="panel-group"> -->
+    <div class="panel"  style="margin-top:2em;background:var(--opaccolor);">
+      <div class="panel-heading" style="background:var(--headercolor);">
+        <h4>Spa Invoice</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item Cost</label>
+            <input type="text" placeholder="Item Cost"  class="form-control" [(ngModel)]="dueamount" >
+          </div>
+          <div class="col-lg-6">
+            <label>GST</label>
+            <input type="text" placeholder="GST" class="form-control" [(ngModel)]="tax" >
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Total Amount Due</label>
+            <input type="text" placeholder="Total Amount Due" class="form-control" [(ngModel)]="total" >
+          </div>
+          <div class="col-lg-6">
+            <label>Payment Date</label>
+            <input type="text"  placeholder="Payment Date" class="form-control" [(ngModel)]="date">
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Round OF Value</label>
+            <input type="text"  placeholder="Round OF Value" class="form-control" [(ngModel)]="roundedvalue"  (keyup)="getTotalValue()">
+            <div class="row">
+              <div class="col-lg-12">
+                <label>Total Amout Due After Rounded</label>
+                <input type="text" placeholder="Total Amout Due After Rounded"  class="form-control" [value]="getTotalValue()" [(ngModel)]="amounttotal" >
+
+              </div>
+
+
+        </div>
+          </div>
+          <div class="col-lg-6">
+          <label>Select Service</label>
+          <fieldset class="full-width sm-padding">
+              <select id="existingCover" [(ngModel)]="selectedNav" class="form-control">
+                  <option [value]="dropDown.option"
+                      *ngFor="let dropDown of existingCoverList">
+                      {{dropDown.option}}
+                  </option>
+              </select>
+          </fieldset>
+          <br>
+          <div >
+              <input *ngIf="selectedNav === 'Cash'" type="text" placeholder="Cash Amount" [(ngModel)]="payamount" class="form-control" >
+              <input *ngIf="selectedNav === 'Card'" type="text" placeholder="Card"  [(ngModel)]="payamount" class="form-control" >
+              <input *ngIf="selectedNav === 'Nearby'" type="text" placeholder="Nearby" [(ngModel)]="payamount" class="form-control" >
+              <input *ngIf="selectedNav === 'Room Post'" type="text" placeholder="RoomPost" [(ngModel)]="payamount" class="form-control" >
+              <input *ngIf="selectedNav === 'Membership'" type="text" placeholder="Membership" [(ngModel)]="payamount" class="form-control" >
+
+           </div>
+          <!-- <div class="col-lg-6">
+            <label>Payment Mode</label>
+            <select name="users" ng-options="user.name for user in arrlist" ng-change="getdetails()"
+             ng-model="userselected" class="form-control"
+             style="background:var(--blackopac);border:none;color:var(--labelcolor);">
+            <option value="" ng-model="addbill.mode" ng-click=shown(user)> Select Mode </option>
+          </select>
+        </br>
+      <div  ng-show='result1'>
+        <input type="text" placeholder="Cash Amount" class="form-control" ng-model="addbill.payamount">
+      </div>
+        <div  ng-show='result2'>
+          <input type="text" placeholder="Card Details" class="form-control" ng-model="addbill.payamount">
+        </div>
+        <div  ng-show='result3'>
+          <input type="text" placeholder="Nearby Details" class="form-control" ng-model="addbill.payamount">
+        </div>
+        <div  ng-show='result4'>
+          <input type="text" placeholder="RoomPost Details" class="form-control" ng-model="addbill.payamount">
+        </div>
+        <div  ng-show='result5'>
+          <input type="text" placeholder="Membership Details" class="form-control" ng-model="addbill.payamount">
+        </div>
+      </div> -->
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-right" >
+                <button type="button" (click)="apply()" class="btn btn-success btn-sm">Apply</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

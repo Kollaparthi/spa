@@ -1,0 +1,168 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+<div class="container">
+  <div class="panel" style="margin-top:6em;background:var(--opaccolor);">
+    <div class="panel-heading" style="background:var(--headercolor);">
+      <h4>Add Therapists</h4>
+    </div>
+      <div class="panel-body">
+						<div class="row">
+							<div class="col-lg-4">
+                <label>Therapist Name</label>
+
+                <input type="text" placeholder="Therapist Name" class="form-control" [(ngModel)]="name">
+                <div ng-messages='myForm.myControl.$error' ng-if='myForm.myControl.$dirty'>
+                    <!-- <div ng-message='required'>Required field</div> -->
+                </div>
+
+            	</div>
+              <div class="col-lg-4">
+                <label>Age</label>
+                <input type="text" placeholder="Age" class="form-control" [(ngModel)]="age">
+              </div>
+              <div class="col-lg-4">
+                <label>Date Of Birth</label>
+
+                <div >
+                <input type="text" class="form-control"   placeholder="Date Of Birth" [(ngModel)]="dob" bsDatepicker>
+
+                    </div>
+                <!-- <input type="date" placeholder="Date Of Birth" class="form-control" [(ngModel)]="dob"> -->
+            	</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <label>Specialist Inn</label><br>
+                    <input type="text" placeholder="Specialist Inn" class="form-control" [(ngModel)]="specialistIn">
+                  </div>
+                  <div class="col-lg-3">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <label>Color</label><br>
+                    <!-- {{color}} -->
+                    <input type="text" placeholder="Color"  [(colorPicker)]="backgroundcolour"  class="form-control"  [(ngModel)]="backgroundcolour">
+                  </div>
+                  <div class="col-lg-3">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <label>Image</label><br>
+                    <input type="file" class="form-control" (change)="onSelectFile($event)"  [(ngModel)]="imagepath">
+                  </div>
+                  <div class="col-lg-3">
+                    <img  [src]="url" height="100" />
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <label>ID1</label><br>
+                    <input type="file"  [(ngModel)]="id1" (change)="onSelectFile1($event)" class="form-control" >
+                    <!--<input type="file" fileread="id1" id="imgInp1" class="form-control" accept="image/*" />-->
+                  </div>
+                  <div class="col-lg-3">
+                    <img   [src]="url1" height="100" />
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <label>ID2</label><br>
+                        <input type="file" class="form-control" (change)="onSelectFile2($event)"  [(ngModel)]="id2">
+                      </div>
+                      <div class="col-lg-3">
+                        <img [src]="url2" height="100" />
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <label>ID3</label><br>
+                        <input type="file" class="form-control" (change)="onSelectFile3($event)" [(ngModel)]="id3">
+                      </div>
+                      <div class="col-lg-3">
+                        <img  [src]="url3" height="100" />
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right">
+                  <button type="button" class="btn btn-success btn-sm" (click)="save()">Save</button>
+                </div>
+              <!-- <div class="pull-left" >
+              <button type="button" class="btn btn-success">Save</button>
+            </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+       </div>

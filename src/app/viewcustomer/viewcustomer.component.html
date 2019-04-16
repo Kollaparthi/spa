@@ -1,0 +1,91 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+
+<div class="container">
+  <div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+    <div class="panel-heading" style="background:var(--headercolor);">
+      <div class="row">
+        <div class="col-lg-9">
+          <h4>View Customer</h4>
+        </div>
+        <div class="col-lg-3">
+          <input type="text" placeholder="Search Name" class="form-control" [(ngModel)]="search" >
+         
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <!-- <div class="table-responsive"> -->
+  <table class="table table-responsive ">
+    <tbody>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Reference By </th>
+        <th scope="col">Action</th>
+      </tr>
+      <tr  *ngFor="let x of viewcustomerdetails | CustomerFilter:search;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.phonenumber}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.referenceby}}</td>
+        <td><a  [routerLink] = "['/editcustomer',x.customer_id]"><input type="button" value="edit" class="btn btn-success btn-xs"  /></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<!-- </div> -->
+</div>
+</div>
+</div>

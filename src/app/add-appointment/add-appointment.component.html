@@ -1,0 +1,180 @@
+<span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+
+<div class="container">
+
+  <p-fullCalendar  [events]="events" [options]="options" ></p-fullCalendar>
+
+</div>
+<div>
+    <!-- <p-calendar [(ngModel)]="selected_date" dateFormat="dd.mm.yy" [inline]="true"></p-calendar> -->
+
+</div>
+<div id="myModal" class="modal" role="dialog" [ngbCollapse]="showModal" id="pane">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content"  style="margin-top:2em;background:var(--opaccolor);">
+
+      <!-- Modal Header -->
+      <div class="panel">
+        <div class="panel-heading" style="background:var(--headercolor);">
+          <div class="row">
+            <div class="col-lg-8">
+              <h4>Add Appointment</h4>
+            </div>
+            <div class="col-lg-4">
+              <div class="pull-right">
+                <a [routerLink]="['/addcustomer']">
+                  <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"  id="addcustomer">
+                    Add customer
+                  </button>
+                </a>&nbsp;&nbsp;
+                <button type="button" class="close" (click) = "closepopup()">&times;</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel-body" >
+        
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="name">Scheduled On</label>
+            <input type="text" class="form-control"   placeholder="Scheduled On" [(ngModel)]="scheduledon" bsDatepicker>
+
+            <!-- <angular2-date-picker [(ngModel)]="scheduledon" placeholder="Scheduled On" [settings]="datesettings"></angular2-date-picker> -->
+            <!-- <input type="date" id="date1"  class="form-control" placeholder="Scheduled On" [(ngModel)]="scheduledon"> -->
+          </div>
+          <div class="col-lg-4">
+            <label for="name">startTime</label>
+            <!-- <angular2-date-picker [(ngModel)]="starttime" placeholder="Scheduled On" [settings]="timesettings1"></angular2-date-picker> -->
+            <input type="time" class="form-control" placeholder="Start time" [(ngModel)]="starttime" />                         
+
+            <!-- <input type="text"  id="stime" class="form-control"  placeholder="Start time" [(ngModel)]="starttime"> -->
+          </div>
+          <div class="col-lg-4">
+            <label for="name">EndTime</label>
+            <!-- <angular2-date-picker [(ngModel)]="endtime" placeholder="Scheduled On" [settings]="timesettings2"></angular2-date-picker> -->
+            <input type="time" class="form-control" placeholder="Start time" [(ngModel)]="endtime"/>                         
+
+            <!-- <input type="text"  id="" class="form-control" placeholder="End time" [(ngModel)]="endtime"> -->
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="text" >Client Name</label>
+              
+                <div class="dropdown dropdown-scroll">
+                  <button class="btn btn-block dropdown-toggle form-control" value={{custname}} list="browserstherapist"
+                   name="brower"  type="button"
+                    data-toggle="dropdown">
+                      <span class="pull-left" >{{custname}}</span>
+                    <span class="caret pull-right"></span>
+                  </button>
+                  <ul class="dropdown-menu scrl_drpdwn form-control" role="menu" aria-labelledby="dropdownMenu1" >
+                    <li role="presentation">
+                        <input type="text"  class="form-control" placeholder="Search"
+                        >
+                    </li>
+                    <li role="presentation" *ngFor="let customerall of customerAll" >
+                      <span  (ngModelChange)="count('display_name')" (click)="shown(customerall)">
+                        {{customerall.display_name}} </span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- (ngModelChange)="count($event, display_name)" -->
+              </div>
+              <div class="col-lg-6">
+              <label for="name" >Mobile Number</label>
+             
+              <div class="dropdown dropdown-scroll">
+                <button class="btn btn-block dropdown-toggle form-control" value={{phone}} list="browserstherapist"
+                 name="brower"  type="button"
+                  data-toggle="dropdown">
+                    <span class="pull-left" >{{phone}}</span>
+                  <span class="caret pull-right"></span>
+                </button>
+                <ul class="dropdown-menu scrl_drpdwn form-control" role="menu" aria-labelledby="dropdownMenu1" >
+                  <li role="presentation">
+                      <input type="text"  placeholder="Search" class="form-control">
+                  </li>
+                  <li role="presentation" *ngFor="let customerall of customerAll" >
+                    <span  (ngModelChange)="count('phone_number')" (click)="shown(customerall)">
+                      {{customerall.phone_number}} </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="email">Email Address</label><br>
+            <input type="text" name="email" class="form-control" id="email" placeholder="Email Address" value={{address}}  [(ngModel)]="selectemail" (ngModelChange)="count('email')" >
+          </div>
+          <div class="col-lg-6">
+            <label for="email">Customer Allergy</label><br>
+            <input type="text"  placeholder="Customer Allergy" class="form-control" id="allergy" [(ngModel)]="selectallergy" (ngModelChange)="count('allergy')">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="email">Customer Note</label><br>
+            <input type="text"   placeholder="Customer Note" class="form-control" id="note" [(ngModel)]="selectnote" (ngModelChange)="count('note')">
+          </div>
+          <div class="col-lg-6">
+              <label for="name">Procedure Planned</label>
+             
+            <div class="dropdown">
+                <button class="btn btn-block dropdown-toggle selbtn" type="button" data-toggle="dropdown">
+                  <span class="pull-left">select</span>
+                <span class="caret pull-right" style="margin-top:0.5em;"></span>
+                </button>
+                <ul class="dropdown-menu scrl_drpdwn form-control">
+                 <div *ngFor="let treatmentall of treatmentAll" style="padding:2px;">
+                   <div class="action-checkbox">
+                    <input  id="{{treatmentall.treatment_id}}" type="checkbox" [checked] = "selection.indexOf(treatmentall) > -1 " (click) = "toggleSelection(treatmentall)"/>
+                    {{treatmentall.member}}-{{treatmentall.name}}-{{treatmentall.treatment_duration}}-{{treatmentall.No_of_hands}}Hands
+                   </div>
+                 </div>
+               </ul>
+              </div>
+              <div *ngFor="let item of selection; let tpindex=index" class="selected-item">
+                <label>{{item.name}}</label>
+                <div class="dropdown dropdown-scroll">
+                  <button class="btn btn-block dropdown-toggle selbtn"
+                   type="button" id="{{'tp' + tpindex}}"
+                   data-toggle="dropdown" style="    text-align: left;">
+                   <span class="pull-left">select</span>
+                   <span class="caret pull-right" ></span>
+                  </button>
+                  <ul class="dropdown-menu scrl_drpdwn form-control">
+                    <li role="presentation">
+                        <input type="text"  placeholder="Search" class="form-control">
+                    </li>
+                    <li role="presentation" *ngFor="let therapistall of therapistAll let i=index" >
+                       <input *ngIf="item.No_of_hands==4" id="{{'checkbox_'+item.treatment_id+'_'+i}}" type="checkbox"
+                        (click)="onFourHandsTherapistSelection(item, therapistall, $event, 'tp' + tpindex)">
+                       <span (click)="show(item.treatment_id, therapistall, 'tp'+tpindex)">{{therapistall.name}}</span>
+                    </li>
+                 </ul>
+               </div>
+                  </div>
+          </div>
+        </div>
+        <br/>
+
+
+
+      </div>
+
+      <div class="modal-footer">
+          <div class="pull-right">
+              <button type="button" class="btn btn-default btn-sm" (click) = "closepopup()">close</button>
+              <button type="button" class="btn btn-success btn-sm" (click) = "save()" id="saveDetails">Save</button>
+            </div>
+      </div>
+
+    </div>
+  </div>
+</div>

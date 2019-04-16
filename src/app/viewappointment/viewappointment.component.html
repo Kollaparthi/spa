@@ -1,0 +1,111 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+<div class="container">
+
+  <!-- <div class="panel-group"> -->
+    <div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+      <div class="panel-heading" style="background:var(--headercolor);">
+        <h4>ViewAppointment</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-10 col-sm-10">
+            <h5 style="font-weight:600;">{{customername}}</h5>
+            <div class="row">
+              <div class="col-md-3">
+                  <p>Client Id: {{clientid}}</p>
+              </div>
+              <div class="col-md-4">
+                  <p>Phone Number: {{phonenumber}}</p>
+              </div>
+              <div class="col-md-3">
+                  <p>Time: {{time}}</p>
+              </div>
+            </div>
+          </div>
+       </div>
+       <hr/>
+       <h5 style="font-weight:bold;">Planned Treatments</h5>
+       <div class="row"  *ngFor="let item of viewappointment">
+         <div class="col-lg-6">
+           <h5  style="font-weight:600;">&nbsp;&nbsp;{{item.treatment_description}} with {{item.therapist}},{{item.therapist2}}</h5>
+           <p>CheckIn:{{item.CurrentDate}}</p>
+           <p>Engaged:{{item.CurrentDate2}}</p>
+            <p>CheckOut:{{item.CurrentDate3}}</p>
+         </div>
+
+         <div class="col-lg-6">
+              <div style="margin-top: 50px">
+                <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'blink': item.checkinshow == 'checkin'}"
+                 (click)="checkin(item)" *ngIf="item.checkinshow">{{item.checkinshow}} </button>
+                <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'blink': item.engagedshow == 'Engaged'}"
+                *ngIf="item.engagedshow" (click)="Engaged(item)">{{item.engagedshow}}</button>
+                <button type="button" class="btn btn-primary btn-sm" [ngClass]="{'blink': item.checkoutshow == 'check Out'}"
+                *ngIf="item.checkoutshow" (click)="Checkout(item)" >{{item.checkoutshow}}</button>
+              </div>
+            </div>
+          </div>
+          <hr/>
+            <p>Please Checkout the all appointments for Bill Generation</p>
+            <div class="pull-left" >
+              <a><button type="button" id = "addbillbtn" (click)="addbillbn()" class="btn btn-success btn-sm">Add Bill</button></a>
+
+          </div>
+          <div class="pull-right">
+            <a  [routerLink] = "['/editappointment',appointmentId]"><button type="button" class="btn btn-success btn-sm">Edit</button></a>
+          </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+<!-- <a [routerLink] = "['/invoiceprint']">
+  <button type="button" name="button" class="btn btn-success btn-xs">Edit</button></a> -->

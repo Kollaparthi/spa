@@ -1,0 +1,7 @@
+th, td, p {
+  color: var(--white);
+}
+
+h4{
+  color: var(--black);
+}

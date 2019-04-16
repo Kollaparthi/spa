@@ -1,0 +1,109 @@
+
+ <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+        <ul class="mainmenu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Spa
+                <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+                </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+                  <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+                </ul>
+              </li>
+            <li><a href="">Customers
+                <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+                </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+                <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+              </ul>
+            </li>
+            <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+            <li><a href="">Therapists
+                <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+                </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+                  <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+                </ul>
+              </li>
+              <li><a href="">Treatments
+                  <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+                  </span></a>
+                  <ul class="submenu">
+                    <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                    <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+                  </ul>
+                </li>
+                <li><a href="">Tax
+                  <span class="pull-right">
+                    <i class="fa fa-caret-down" style="font-size:24px"></i>
+                  </span></a>
+                    <ul class="submenu">
+                      <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                      <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                    </ul>
+                  </li>
+          </ul>
+
+      </div>
+<span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+
+<div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          <section class="tiles">
+            <article>
+              <span class="image">
+                <img src="./assets/images/appointment.jpg" alt="" width="100%"/>
+              </span>
+              <a [routerLink]="['/addspa']">
+                <h4 style="margin-top:2em;">SPA</h4>
+              </a>
+            </article>
+            <article>
+              <span class="image">
+                <img src="./assets/images/calendar.jpg" alt="" />
+              </span>
+              <a [routerLink] = "['/addappointment']">
+                <h4 style="margin-top:2em;">APPOINTMENT</h4>
+              </a>
+            </article>
+            <article>
+              <span class="image">
+                <img src="./assets/images/customer.jpg" alt="" />
+              </span>
+              <a [routerLink] = "['/addcustomer']">
+                <h4 style="margin-top:2em;">CUSTOMERS</h4>
+              </a>
+            </article>
+            <article>
+              <span class="image">
+                <img src="./assets/images/reports.jpg" alt="" />
+              </span>
+              <a [routerLink] = "['/addtreatment']">
+                <h4 style="margin-top:2em;">TREATMENTS</h4>
+              </a>
+            </article>
+            <article>
+              <span class="image">
+                <img src="./assets/images/therapist.jpg" alt="" />
+              </span>
+              <a [routerLink] = "['/addtherapist']">
+                <h4 style="margin-top:2em;">THERAPISTS</h4>
+              </a>
+            </article>
+            <article>
+              <span class="image">
+                <img src="./assets/images/tax.jpg" alt=""/>
+              </span>
+              <a [routerLink]="['/addtax']">
+                <h4 style="margin-top:2em;">TAX</h4>
+              </a>
+            </article>
+          </section>
+        </div>
+      </div>
+
+  </div>

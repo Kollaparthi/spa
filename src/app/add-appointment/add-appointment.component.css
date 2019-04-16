@@ -1,0 +1,25 @@
+.panel {
+  margin-bottom: 20px;
+  background-color: var(--headercolor);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.scrl_drpdwn {
+  background-color: var(--white);
+  height: 200px;
+  /* width: 200px; */
+  overflow-y: scroll;
+}
+
+a{
+  color: var(--white);
+  font-weight: 700;
+}
+@media (min-width: 1200px){
+.container {
+    width: 1070px;
+    margin-right: 5em;
+}
+}

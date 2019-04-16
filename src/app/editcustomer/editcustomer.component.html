@@ -1,0 +1,192 @@
+<div id="mySidenav" class="sidenav">
+
+<a href="javascript:void(0)" style="background: #111;" class="closebtn" onclick="closeNav()">&times;</a>      
+    <ul class="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Spa
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink]="['/addspa']">Add Spa</a></li>
+              <li><a [routerLink] = "['/viewspa']">View Spa</a></li>
+            </ul>
+          </li>
+        <li><a href="">Customers
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+          <ul class="submenu">
+            <li><a [routerLink] = "['/addcustomer']">Add Customers</a></li>
+            <li><a [routerLink] = "['/viewcustomer']">View Customers</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink] = "['/addappointment']">Appointment</a></li>
+        <li><a href="">Therapists
+            <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+            </span></a>
+            <ul class="submenu">
+              <li><a [routerLink] = "['/addtherapist']">Add Therapist</a></li>
+              <li><a [routerLink] = "['/viewtherapist']">View Therapist</a></li>
+            </ul>
+          </li>
+          <li><a href="">Treatments
+              <span class="pull-right"><i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+              <ul class="submenu">
+                <li><a [routerLink] = "['/addtreatment']">Add Treatments</a></li>
+                <li><a [routerLink] = "['/viewtreatment']">View Treatments</a></li>
+              </ul>
+            </li>
+            <li><a href="">Tax
+              <span class="pull-right">
+                <i class="fa fa-caret-down" style="font-size:24px"></i>
+              </span></a>
+                <ul class="submenu">
+                  <li><a [routerLink]="['/addtax']">Add Tax</a></li>
+                  <li><a [routerLink] = "['/viewtax']">View Tax</a></li>
+                </ul>
+              </li>
+      </ul>
+
+  </div>
+  <span style="font-size:35px;cursor:pointer;padding:1em;" onclick="openNav()">&#9776;</span>
+<div class="container">
+  <div class="panel" style="margin-top:2em;background:var(--opaccolor);">
+    <div class="panel-heading" style="background:var(--headercolor);">
+      <h4>Edit Customer</h4>
+    </div>
+      <div class="panel-body" id="minus-panel">
+
+						<div class="row">
+							<div class="col-lg-4">
+                <label>First Name</label>
+								<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="firstname">
+							</div>
+							<div class="col-lg-4">
+                <label>Middle Name</label>
+								<input type="text" placeholder="Middle Name" class="form-control" [(ngModel)]="middlename">
+							</div>
+              <div class="col-lg-4">
+                <label>Last Name</label>
+								<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="lastname">
+							</div>
+						</div>
+            <div class="row">
+							<div class="col-lg-4">
+                <label>Display Name</label>
+								<input type="text" placeholder="Display Name" class="form-control" [(ngModel)]="displayname">
+							</div>
+
+              <div class="col-lg-4">
+                <label>Password</label>
+								<input type="password" placeholder="Password" class="form-control" [(ngModel)]="password">
+							</div>
+              <div class="col-lg-4">
+                  <label>Gender</label><br>
+                  <span>
+                    <label>
+                    <input type="radio" name="gender" value="male" [(ngModel)]="gender" ng-checked="(gender=='male')">
+                     Male &nbsp;
+                    </label>
+                    <label>
+                    <input type="radio" name="gender" value="female" [(ngModel)]="gender" ng-checked="(gender=='female')">
+                    Female &nbsp;
+                  </label>
+                  <label>
+                    <input type="radio" name="gender" value="other" [(ngModel)]="gender" ng-checked="(gender=='other')">
+                    Other &nbsp;
+                  </label>
+                  </span>
+                </div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-4">
+                <label>Date of Birth</label>
+                <!-- <label>Password</label> -->
+                <input type="date" placeholder="Date of Birth" class="form-control" [(ngModel)]="dob">
+              </div>
+              <div class="col-lg-4">
+                <label>Notes</label>
+                <input type="text" placeholder="Notes" class="form-control" [(ngModel)]="notes">
+              </div>
+              <div class="col-lg-4">
+                <label>Allergies</label>
+                <input type="text" placeholder="Allergies" class="form-control" [(ngModel)]="allergies">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <label>Reference BY</label>
+                <input type="text" placeholder="Reference BY" class="form-control" [(ngModel)]="referenceby">
+              </div>
+              <div class="col-lg-4">
+                <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-9"> -->
+                    <label>Choosen File</label>
+                    <input type="file" id="imgInp" class="form-control" [(ngModel)]="choosenfile">
+                  <!-- </div> -->
+                <!-- </div> -->
+              </div>
+              <div class="col-lg-2" >
+                  <img class="imgsize" id='img-upload' />
+                </div>
+            </div>
+
+          <div class="header" style="background:var(--blackopac);border:none;color:var(--labelcolor);">
+            <h4 style="padding:5px;">Customer Contact Details</h4>
+          </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <label>Address Type</label>
+      <select type="text" class="form-control" id="sel1" style="height:33px;" [(ngModel)]="type">
+      <option>Home</option>
+      <option>Office</option>
+    </select>
+    </div>
+    <div class="col-lg-4">
+      <label>Address Line1</label>
+
+      <input type="text" placeholder="Address Line1" class="form-control" [(ngModel)]="addressline1">
+    </div>
+    <div class="col-lg-4">
+      <label>Address Line2</label>
+      <input type="text" placeholder="Address Line2" class="form-control" [(ngModel)]="addressline2">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <label>City</label>
+      <input type="text" placeholder="city" class="form-control" [(ngModel)]="city">
+    </div>
+    <div class="col-lg-4">
+      <label>Country</label>
+      <input type="text" placeholder="country" class="form-control" [(ngModel)]="country">
+    </div>
+    <div class="col-lg-4">
+        <label>Phone Number</label>
+        <input type="text" placeholder="Phone Number" class="form-control" [(ngModel)]="phonenumber">
+      </div>
+  </div>
+  <div class="row">
+  <div class="col-lg-4">
+      <label>State</label>
+      <input type="text" placeholder="State" class="form-control" [(ngModel)]="state">
+    </div>
+    <div class="col-lg-4">
+      <label>Email</label>
+      <input type="email" placeholder="Email" class="form-control" [(ngModel)]="email">
+    </div>
+    <div class="col-lg-4">
+      <label>Postal Code</label>
+      <input type="text" placeholder="Postal Code" class="form-control" [(ngModel)]="postalcode">
+    </div>
+  </div>
+  <br/>
+    <div class="pull-right" >
+      <button type="button" class="btn btn-default btn-sm">Cancel</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-success btn-sm"(click)="update()">Update</button>
+   </div>
+	</div>
+	</div>
+</div>
